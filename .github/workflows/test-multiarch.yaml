@@ -37,8 +37,8 @@ jobs:
       strategy:
         matrix:
           os: ['x64, arm64']
-      runs-on: "[linux, ${{ matrix.os }}, large]"
+      runs-on: ${{ matrix.os == 'x64' && 'ubuntu-x64-large' || 'ubuntu-arm64-large' }}
+
       steps:
         - id: test
           run: echo "works on ${{ matrix.os }}"
-
