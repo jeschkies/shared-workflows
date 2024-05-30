@@ -34,11 +34,10 @@ jobs:
   start-multi-arch:
       needs: [test]
       name: start-multi-arch-builds
-      strategy:
-        matrix:
-          os: ['x64, arm64']
-      runs-on: ${{ matrix.os == 'x64' && 'ubuntu-x64-large' || 'ubuntu-arm64-large' }}
-
+      # strategy:
+      #   matrix:
+      #     os: ['x64, arm64']
+      runs-on: "ubuntu-arm64-large"
       steps:
         - id: test
-          run: echo "works on ${{ matrix.os }}"
+          run: echo "works"
