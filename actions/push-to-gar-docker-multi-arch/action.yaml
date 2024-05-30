@@ -7,6 +7,11 @@ on:
         description: desc
         required: true
         type: string
+    outputs:
+      resolved-platforms: 
+        description: resolved-platform
+        value: ${{ steps.env-var.outputs.resolved-platforms }}
+
 
 # env:
 #   platform_env: ${{ inputs.platforms }}
