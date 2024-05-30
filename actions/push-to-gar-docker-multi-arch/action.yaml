@@ -26,10 +26,11 @@ runs:
         action_ref: ${{ github.action_ref }}
       uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       with:
+        repository: grafana/shared-workflows
         ref: "multiarch-docker-builds-using-sh-runners"
         path: _shared-workflows-push-to-gar-docker-multi-arch
     - name: env-var
       uses: grafana/shared-workflows/actions/resolve-architectures@multiarch-docker-builds-using-sh-runners
-      
+
       with: 
         platforms: ${{ inputs.platforms }}
