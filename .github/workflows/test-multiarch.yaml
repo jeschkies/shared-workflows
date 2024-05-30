@@ -36,7 +36,7 @@ jobs:
       name: start-multi-arch-builds
       strategy:
         matrix:
-          os: "['arm64', 'x64']"
+          os: ['arm64', 'x64']
       runs-on: [linux, ${{matrix.os}}, large]
       steps:
         - id: test
