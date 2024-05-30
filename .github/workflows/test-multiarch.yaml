@@ -31,3 +31,14 @@ jobs:
         uses: ./actions/push-to-gar-docker-multi-arch
         with:
           platforms: ${{ needs.expose-env-var.outputs.platforms }}
+  start-multi-arch:
+      needs: [test]
+      name: start-multi-arch-builds
+      strategy:
+        matrix:
+          os: "['arm64', 'x64']"
+      runs-on: [linux, ${{matrix.os}}, large]
+      steps:
+        - id: test
+          run: echo "works on ${{ matrix.os }}"
+

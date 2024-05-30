@@ -1,16 +1,19 @@
 name: Resolve architectures for Docker image builds
 description: Composite action to resolve architectures for Docker image builds
-on:
-  workflow_call:
-    inputs:
-      platform:
-        required: true
-        type: string
+inputs:
+  platform:
+    description: platform
+    required: true
+outputs:
+  resolved-platforms: 
+    description: resolved-platform
+    value: ${{ steps.resolve-platforms-names.outputs.resolved-platforms }}
   
 runs:
   using: composite
   steps:
     - name: Resolve platform name
+      id: resolve-platforms-names
       shell: bash
       run: |
         declare -a arr=()
@@ -29,5 +32,6 @@ runs:
         done
 
         arr_string=$(IFS=, ; echo "${arr[*]}")
+        echo "resolved-platforms=${arr_string}" >> ${GITHUB_OUTPUT}
           
         echo "Resolved platforms: ${arr_string}"
