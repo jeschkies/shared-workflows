@@ -1,16 +1,13 @@
 name: Push to artifact registry
 description: Composite action to push to Google Artifact Registry
-on:
-  workflow_call:
-    inputs:
-      platforms:
-        description: desc
-        required: true
-        type: string
-    outputs:
-      resolved-platforms: 
-        description: resolved-platform
-        value: ${{ steps.env-var.outputs.resolved-platforms }}
+inputs:
+  platforms:
+    description: desc
+    required: true
+outputs:
+  resolved-platforms: 
+    description: resolved-platform
+    value: ${{ steps.env-var.outputs.resolved-platforms }}
 
 
 # env:
