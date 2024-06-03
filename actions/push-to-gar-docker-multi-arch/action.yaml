@@ -5,9 +5,9 @@ inputs:
     description: desc
     required: true
 outputs:
-  resolved-platforms: 
+  resolved_platforms: 
     description: resolved-platform
-    value: ${{ steps.env-var.outputs.resolved-platforms }}
+    value: ${{ steps.env-var.outputs.resolved_platforms }}
 
 
 # env:
@@ -34,4 +34,4 @@ runs:
         platforms: ${{ inputs.platforms }}
     - name: print
       shell: bash
-      run: echo "${{ steps.env-var.outputs.resolved-platforms }}"
+      run: echo "${{ steps.env-var.outputs.resolved_platforms }}"

@@ -5,9 +5,9 @@ inputs:
     description: platform
     required: true
 outputs:
-  resolved-platforms: 
+  resolved_platforms: 
     description: resolved-platform
-    value: ${{ steps.resolve-platforms-names.outputs.resolved-platforms }}
+    value: ${{ steps.resolve-platforms-names.outputs.resolved_platforms }}
   
 runs:
   using: composite
@@ -33,6 +33,6 @@ runs:
 
         arr_string=$(IFS=, ; echo "['${arr[*]}']")
         arr_string=$(echo $arr_string | sed "s/,/','/g")
-        echo "resolved-platforms=${arr_string}" >> ${GITHUB_OUTPUT}
+        echo "resolved_platforms=${arr_string}" >> ${GITHUB_OUTPUT}
           
         echo "Resolved platforms: ${arr_string}"
