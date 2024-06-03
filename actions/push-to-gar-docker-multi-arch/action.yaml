@@ -16,9 +16,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: print
-      shell: bash
-      run: echo "exposing env var"
     - name: Checkout shared workflows
       env:
         # In a composite action, these two need to be indirected via the
@@ -33,6 +30,8 @@ runs:
         path: _shared-workflows-push-to-gar-docker-multi-arch
     - name: env-var
       uses: grafana/shared-workflows/actions/resolve-architectures@multiarch-docker-builds-using-sh-runners
-
       with: 
         platforms: ${{ inputs.platforms }}
+    - name: print
+      shell: bash
+      run: echo ${{ steps.env-var.outputs.resolved-platforms }}
