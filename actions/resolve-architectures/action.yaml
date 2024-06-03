@@ -1,7 +1,7 @@
 name: Resolve architectures for Docker image builds
 description: Composite action to resolve architectures for Docker image builds
 inputs:
-  platform:
+  platforms:
     description: platform
     required: true
 outputs:
